@@ -1,22 +1,7 @@
 CREATE DATABASE chat;
 
 USE chat;
-
-CREATE TABLE messages (
-  /* This table holds the messages for storage on the server.
-     Some keys are shared with other tables .*/
-  id INT NOT NULL AUTO_INCREMENT,
-  user_id INT NOT NULL,
-  room_id INT NOT NULL,
-  message_text TEXT NOT NULL,
-  PRIMARY KEY(id),
-  FOREIGN KEY(user_id)
-    REFERENCES users(id),
-  FOREIGN KEY(room_id)
-    REFERENCES rooms(id)
-);
-
-/* Create other tables and define schemas for them here! */
+/* mysql -u root < ./server/schema.sql */
 
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
@@ -38,6 +23,22 @@ CREATE TABLE friends (
   FOREIGN KEY(user2)
     REFERENCES users(id)
 );
+
+CREATE TABLE messages (
+  /* This table holds the messages for storage on the server.
+     Some keys are shared with other tables .*/
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  room_id INT NOT NULL,
+  message_text TEXT NOT NULL,
+  PRIMARY KEY(id),
+  FOREIGN KEY(user_id)
+    REFERENCES users(id),
+  FOREIGN KEY(room_id)
+    REFERENCES rooms(id)
+);
+
+/* Create other tables and define schemas for them here! */
 
 
 
